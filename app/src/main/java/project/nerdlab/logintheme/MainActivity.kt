@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
@@ -32,6 +33,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -57,6 +59,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.unit.toSize
 import org.intellij.lang.annotations.Language
 import project.nerdlab.logintheme.ui.theme.LoginThemeTheme
@@ -114,7 +120,7 @@ fun LoginScreen(){
             modifier = Modifier.height(4.dp)
         )
 
-        InputBox("Password")
+        PasswordBox("Password")
 
 
         Spacer(
@@ -261,10 +267,36 @@ fun InputBox(name: String){
         )
         OutlinedTextField(
             value = "",
-            onValueChange = {}
+            onValueChange = {},
         )
     }
 }
+
+
+@Composable
+fun PasswordBox(name: String){
+    Column {
+        Text(
+            text = "$name",
+//            inputType = "$inputType"
+        )
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            trailingIcon = {
+                IconButton(onClick = { }) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.design_ic_visibility),
+                        contentDescription = "Info Icon",
+                        tint = Color.Gray
+                    )
+                }
+            }
+        )
+
+    }
+}
+
 
 
 @Composable
